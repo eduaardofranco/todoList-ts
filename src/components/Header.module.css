@@ -1,0 +1,21 @@
+.mainHeader {
+    background: var(--gray-700);
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mainHeader > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem
+}
+.mainHeader h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--blue-300);
+}
+.mainHeader h1 span {
+    color: var(--purple-400);
+}

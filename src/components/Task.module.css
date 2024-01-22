@@ -1,0 +1,52 @@
+.taskContianer {
+    background: var(--gray-500);
+    border-radius: 8px;
+    border: 1px solid var(--gray-400);
+    padding: 1.6rem;
+    font-size: 1.4rem;
+    color: var(--gray-100);
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1.2rem;
+}
+.removeTask {
+    background: transparent;
+    border: none;
+    color: var(--gray-300);
+    cursor: pointer;
+}
+.inputs {
+    position: relative;
+}
+.labelInput {
+    display: block;
+    border-radius: 999px;
+    background: transparent;
+    border: 2px solid var(--blue-300);
+    height: 24px;
+    width: 24px;
+}
+.inputs input[type="checkbox"] {
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+    border-radius: 999px;
+    height: 24px;
+    width: 24px;
+    opacity: 0;
+}
+input[type="checkbox"]:checked + .labelInput {
+    border: none;
+    background: var(--purple-400);
+}
+input[type="checkbox"]:checked + .labelInput:before {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iI2Y1ZjVmNSIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMzIuNDksODAuNDlsLTEyOCwxMjhhMTIsMTIsMCwwLDEtMTcsMGwtNTYtNTZhMTIsMTIsMCwxLDEsMTctMTdMOTYsMTgzLDIxNS41MSw2My41MWExMiwxMiwwLDAsMSwxNywxN1oiPjwvcGF0aD48L3N2Zz4=');
+    content: '';
+    color: var(--gray-100);
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    height: 16px;
+    width: 16px;
+  }
