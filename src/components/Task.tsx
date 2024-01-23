@@ -13,13 +13,19 @@ interface TaskProps {
   interface CheckTask {
     onCheckTask: (id: number) => void;
   }
+  interface DeleteTask {
+    onDeleteTask: (id: number) => void;
+  }
 
-  export function Task({ taskObj, onCheckTask }: { taskObj: TaskProps; onCheckTask: CheckTask }) {
+  export function Task({ taskObj, onCheckTask, onDeleteTask }: { taskObj: TaskProps; onCheckTask: CheckTask; onDeleteTask: DeleteTask }) {
       const [isChecked, setIsChecked] = useState(false)
       
         function handleCheckTask(id: number) {
             setIsChecked(!isChecked);
             onCheckTask(taskObj.id)
+        }
+        function deleteTask(id: number) {
+            onDeleteTask(id)
         }
     return(
         <>
@@ -27,13 +33,15 @@ interface TaskProps {
             <div className={styles.inputs}>
                 <input
                     type="checkbox"
-                    id="theTask" 
                     onChange={() => handleCheckTask(taskObj.id)}
                 />
-                <label htmlFor="theTask" className={styles.labelInput}></label>
+                <label className={styles.labelInput}></label>
             </div>
             <p>{taskObj.content}</p>
-            <button className={styles.removeTask}>
+            <button
+                className={styles.removeTask}
+                onClick={() => deleteTask(taskObj.id)}
+            >
                 <Trash />
             </button>
         </div>

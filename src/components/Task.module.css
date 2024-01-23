@@ -38,6 +38,7 @@
     height: 24px;
     width: 24px;
     opacity: 0;
+    z-index: 100;
 }
 input[type="checkbox"]:checked + .labelInput {
     border: none;

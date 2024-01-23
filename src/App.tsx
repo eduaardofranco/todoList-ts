@@ -4,7 +4,7 @@ import { Task } from './components/Task'
 import { ClipboardText } from 'phosphor-react'
 import '../global.css'
 import styles from './App.module.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface Task {
   id: number;
@@ -13,10 +13,9 @@ interface Task {
 }
 function App() {
   const [tasks, setTasks] = useState<Task[]>([])
+  const [doneTasksCount, setDoneTasksCount] = useState(0)
 
   const onAddTask = (task:Task) => {
-    console.log([...tasks, task])
-
     setTasks([...tasks, task])
 
   }
@@ -24,18 +23,26 @@ function App() {
   const onCheckTask = (id: number) => {
    // Create a new array with updated tasks
     const updatedTasks = tasks.map(task =>
-      task.id === id ? { ...task, status: 'done' } : task
+      task.id === id ? { ...task, status: task.status === 'done' ? 'open' : 'done' } : task
   ) ;
-
     // Update the state with the new array
     setTasks(updatedTasks);
-    console.log([...tasks, updatedTasks])
-    // console.log([...tasks, tasks])
+  }
 
-
+  const onDeleteTask = (id: number) => {
+    const updateTasksAfterDelete = tasks.filter(task => task.id !== id)
+    setTasks(updateTasksAfterDelete)
   }
 
   const createdTasksCount = tasks.length;
+
+
+  useEffect(() => {
+    const count = tasks.filter(task => task.status === 'done').length;
+    setDoneTasksCount(count);
+  },[tasks])
+
+
 
   return (
     <>
@@ -50,7 +57,7 @@ function App() {
             <span>{createdTasksCount}</span>
           </p>
           <p className={styles.doneTasks}>Done
-            <span>1 out {createdTasksCount}</span>
+            <span>{doneTasksCount} out {createdTasksCount}</span>
           </p>
         </header>
         <div className={styles.tasksWrapper} >
@@ -66,6 +73,7 @@ function App() {
               key={task.id}
               taskObj={task}
               onCheckTask={onCheckTask}
+              onDeleteTask={onDeleteTask}
             />
 
           ))
