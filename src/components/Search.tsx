@@ -9,7 +9,7 @@ interface Task {
 }
 
 interface SearchProps {
-    onAddTask: (newTasks: Task | Task[]) => void; // Ajuste aqui
+    onAddTask: (newTasks: Task) => void; 
   }
 
 export function Search({ onAddTask }: SearchProps) {

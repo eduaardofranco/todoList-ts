@@ -5,19 +5,15 @@ import { Trash } from 'phosphor-react'
 
 interface TaskProps {
     taskObj: {
-      id: number;
-      content: string;
-      status: string;
+        id: number;
+        content: string;
+        status: string;
     };
-  }
-  interface CheckTask {
     onCheckTask: (id: number) => void;
-  }
-  interface DeleteTask {
     onDeleteTask: (id: number) => void;
-  }
+}
 
-  export function Task({ taskObj, onCheckTask, onDeleteTask }: { taskObj: TaskProps; onCheckTask: CheckTask; onDeleteTask: DeleteTask }) {
+  export function Task({ taskObj, onCheckTask, onDeleteTask }: TaskProps) {
       const [isChecked, setIsChecked] = useState(false)
       
         function handleCheckTask(id: number) {
