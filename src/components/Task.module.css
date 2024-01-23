@@ -10,6 +10,9 @@
     align-items: start;
     gap: 1.2rem;
 }
+.taskContianer + .taskContianer {
+    margin-top: 1.2rem;
+}
 .removeTask {
     background: transparent;
     border: none;
@@ -49,4 +52,8 @@ input[type="checkbox"]:checked + .labelInput:before {
     left: 4px;
     height: 16px;
     width: 16px;
+  }
+  .doneTask p {
+    color: var(--gray-300);
+    text-decoration: line-through;
   }
