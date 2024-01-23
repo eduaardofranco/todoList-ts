@@ -61,11 +61,15 @@ function App() {
           </p>
         </header>
         <div className={styles.tasksWrapper} >
-          <div className={styles.noTasks}>
-            <ClipboardText />
-            <h3>You do not have created tasks yet</h3>
-            <p>Create tasks and organize your items to do</p>
-          </div>
+          {
+             tasks.length === 0 && (
+              <div className={styles.noTasks}>
+                <ClipboardText />
+                <h3>You do not have created tasks yet</h3>
+                <p>Create tasks and organize your items to do</p>
+              </div>
+            )
+          }
         </div>
         {
           tasks && tasks.map(task => (
